@@ -40,6 +40,15 @@ namespace StringCalculatorProject
                 numbers.Add(success ? parsedNum : 0);
             }
 
+            // check for negative numbers
+            var negativeNumbers = numbers.Where(number => number < 0);
+
+            if (negativeNumbers.Any())
+            {
+                var negativeNumbersString = string.Join(',', negativeNumbers);
+                throw new ArgumentOutOfRangeException($"Can not add negative numbers. Negative numbers in string are: {negativeNumbersString}");
+            }
+
             return numbers.Sum();
         }
     }

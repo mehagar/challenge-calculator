@@ -11,7 +11,6 @@ namespace StringCalculatorTests
             public StringCalculatorTestData()
             {
                 Add("1,5000", 5001);
-                Add("4,-3", 1);
                 Add(",", 0);
                 Add("5,tytyt", 5);
                 Add("5,", 5);
@@ -30,6 +29,14 @@ namespace StringCalculatorTests
             var actual = stringCalculator.Add(s);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void NegativeNumbers_Add_Throws()
+        {
+            var stringCalculator = new StringCalculator();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => stringCalculator.Add("4,-3"));
         }
     }
 }
