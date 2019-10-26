@@ -1,12 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace StringCalculator
+namespace StringCalculatorProject
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var stringCalculator = new StringCalculator();
+            while(true)
+            {
+                Console.WriteLine("Enter a string to Add:");
+                var input = Console.ReadLine();
+                Console.WriteLine($"Sum: {stringCalculator.Add(input)}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Performs mathematical operations on numbers within formatted strings.
+    /// </summary>
+    public class StringCalculator
+    {
+        /// <summary>
+        /// Adds two numbers withing the formatted string.
+        /// </summary>
+        /// <param name="s">The string containing the numbers to add.</param>
+        /// <returns>The sum of the two numbers in <paramref name="s"/>.</returns>
+        public int Add(string s)
+        {
+            List<int> numbers = new List<int>();
+
+            var splitNums = s.Split(',');
+            foreach (var num in splitNums)
+            {
+                bool success = Int32.TryParse(num, out var parsedNum);
+
+                numbers.Add(success ? parsedNum : 0);
+            }
+
+            if (numbers.Count > 2)
+            {
+                throw new ArgumentException("Maximum of 2 operands supported");
+            }
+
+            return numbers[0] + numbers[1];
         }
     }
 }
