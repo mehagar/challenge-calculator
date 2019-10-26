@@ -15,6 +15,7 @@ namespace StringCalculatorTests
                 Add(",", 0);
                 Add("5,tytyt", 5);
                 Add("5,", 5);
+                Add("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12", 78);
             }
         }
 
@@ -27,14 +28,6 @@ namespace StringCalculatorTests
             var actual = stringCalculator.Add(s);
 
             Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void MoreThanTwoNumbers_Add_ThrowsException()
-        {
-            var stringCalculator = new StringCalculator();
-
-            Assert.Throws<ArgumentException>(() => stringCalculator.Add("1,2,3"));
         }
     }
 }

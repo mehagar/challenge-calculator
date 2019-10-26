@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StringCalculatorProject
 {
@@ -39,12 +40,7 @@ namespace StringCalculatorProject
                 numbers.Add(success ? parsedNum : 0);
             }
 
-            if (numbers.Count > 2)
-            {
-                throw new ArgumentException("Maximum of 2 operands supported");
-            }
-
-            return numbers[0] + numbers[1];
+            return numbers.Sum();
         }
     }
 }
