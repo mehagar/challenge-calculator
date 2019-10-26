@@ -37,7 +37,14 @@ namespace StringCalculatorProject
             {
                 bool success = Int32.TryParse(num, out var parsedNum);
 
-                numbers.Add(success ? parsedNum : 0);
+                if (success && parsedNum <= 1000)
+                {
+                    numbers.Add(parsedNum);
+                }
+                else
+                {
+                    numbers.Add(0);
+                }
             }
 
             // check for negative numbers

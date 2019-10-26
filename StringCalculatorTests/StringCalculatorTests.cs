@@ -10,7 +10,8 @@ namespace StringCalculatorTests
         {
             public StringCalculatorTestData()
             {
-                Add("1,5000", 5001);
+                Add("1,5000", 1);
+                Add("5000, 4000", 0);
                 Add(",", 0);
                 Add("5,tytyt", 5);
                 Add("5,", 5);
