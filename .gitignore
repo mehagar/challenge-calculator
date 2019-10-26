@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/StringCalculator/obj
+/StringCalculator/bin/Debug/netcoreapp3.0
+/StringCalculator/.vs/StringCalculator/v16
