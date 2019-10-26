@@ -33,17 +33,16 @@ namespace StringCalculatorProject
         {
             List<int> numbers = new List<int>();
 
-            // parse the delimiter and read past the \n to get to the string to parse
-            var match = Regex.Match(s, @"(?://(?<delimiter>.)\\n)(?<stringtoparse>.+$)");
+            var match = Regex.Match(s, @"(?://(?:\[(?<delimiter>.+)\]|(?<delimiter>.))\\n)?(?<stringtoparse>.+$)");
 
             var delimiters = new List<string> { @",", @"\n" };
 
             var customerDelimiter = match.Groups["delimiter"].ToString();
             delimiters.Add(customerDelimiter);
 
-            var actualString = match.Groups["stringtoparse"];
+            var actualString = match.Groups["stringtoparse"].ToString();
 
-            var splitNums = s.Split(delimiters.ToArray(), StringSplitOptions.None);
+            var splitNums = actualString.Split(delimiters.ToArray(), StringSplitOptions.None);
             foreach (var num in splitNums)
             {
                 bool success = Int32.TryParse(num, out var parsedNum);

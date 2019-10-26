@@ -20,6 +20,7 @@ namespace StringCalculatorTests
                 Add(@"5\n6\n7", 18);
                 Add(@"//#\n2#5", 7);
                 Add(@"//,\n2,ff,100", 102);
+                Add(@"//[***]\n11***22***33", 66);
             }
         }
 
