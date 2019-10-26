@@ -32,7 +32,7 @@ namespace StringCalculatorProject
         {
             List<int> numbers = new List<int>();
 
-            var splitNums = s.Split(',');
+            var splitNums = s.Split(new[]{ @",", @"\n" }, StringSplitOptions.None);
             foreach (var num in splitNums)
             {
                 bool success = Int32.TryParse(num, out var parsedNum);

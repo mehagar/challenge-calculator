@@ -16,6 +16,8 @@ namespace StringCalculatorTests
                 Add("5,tytyt", 5);
                 Add("5,", 5);
                 Add("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12", 78);
+                Add(@"1\n2,3", 6);
+                Add(@"5\n6\n7", 18);
             }
         }
 
