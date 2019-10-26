@@ -10,6 +10,7 @@ namespace StringCalculatorTests
         {
             public StringCalculatorTestData()
             {
+                Add("", 0);
                 Add("1,5000", 1);
                 Add("5000, 4000", 0);
                 Add(",", 0);
@@ -21,6 +22,7 @@ namespace StringCalculatorTests
                 Add(@"//#\n2#5", 7);
                 Add(@"//,\n2,ff,100", 102);
                 Add(@"//[***]\n11***22***33", 66);
+                Add(@"//[*][!!][r9r]\n11r9r22*hh*33!!44", 110);
             }
         }
 
