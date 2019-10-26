@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace StringCalculatorProject
 {
@@ -9,7 +10,7 @@ namespace StringCalculatorProject
         static void Main(string[] args)
         {
             var stringCalculator = new StringCalculator();
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Enter a string to Add:");
                 var input = Console.ReadLine();
@@ -32,7 +33,17 @@ namespace StringCalculatorProject
         {
             List<int> numbers = new List<int>();
 
-            var splitNums = s.Split(new[]{ @",", @"\n" }, StringSplitOptions.None);
+            // parse the delimiter and read past the \n to get to the string to parse
+            var match = Regex.Match(s, @"(?://(?<delimiter>.)\\n)(?<stringtoparse>.+$)");
+
+            var delimiters = new List<string> { @",", @"\n" };
+
+            var customerDelimiter = match.Groups["delimiter"].ToString();
+            delimiters.Add(customerDelimiter);
+
+            var actualString = match.Groups["stringtoparse"];
+
+            var splitNums = s.Split(delimiters.ToArray(), StringSplitOptions.None);
             foreach (var num in splitNums)
             {
                 bool success = Int32.TryParse(num, out var parsedNum);
